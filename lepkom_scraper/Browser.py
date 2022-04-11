@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class Utils:
+class Browser:
     def __init__(self, driver) -> None:
         self.driver = driver
         self.url = "https://kursusvmlepkom.gunadarma.ac.id/login/index.php"
@@ -62,9 +62,14 @@ class Utils:
             EC.presence_of_element_located(login)
         )
 
+    def send_enter(element):
+        element.send_keys(Keys.ENTER)
+
+    def send_back(self):
+        self.driver.back()
+
 
 driver = './chromedriver'
-utils = Utils(driver)
-utils.login(headless=True)
+utils = Browser(driver)
+utils.login()
 print('Logged in')
-
